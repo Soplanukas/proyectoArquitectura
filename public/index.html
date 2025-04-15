@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Híbrido</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 450px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background: #4285f4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #357ae8;
+    }
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Inicia sesión</h2>
+    
+    <!-- Botón para iniciar sesión con Google -->
+    <button id="login-google">Iniciar sesión con Google</button>
+    
+    <div class="divider">o</div>
+    
+    <!-- Formulario de inicio de sesión con email -->
+    <form id="email-login-form">
+      <input type="email" id="email" placeholder="Correo (ej: usuario@ucaldas.edu.co)" required>
+      <input type="password" id="password" placeholder="Contraseña" required>
+      <button type="submit">Iniciar sesión con Email</button>
+    </form>
+    
+    <!-- Formulario de registro con email -->
+    <form id="email-register-form">
+      <input type="email" id="reg-email" placeholder="Correo (ej: usuario@ucaldas.edu.co)" required>
+      <input type="password" id="reg-password" placeholder="Contraseña" required>
+      <button type="submit">Registrarse con Email</button>
+    </form>
+  </div>
+
+  <!-- Script de autenticación con Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
+    import { 
+      getAuth, 
+      GoogleAuthProvider, 
+      signInWithPopup,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword 
+    } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
+
+    // Configuración de Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCGwFsmz6SKcFlJTyULAIk2rR6CHJ6liM4",
+      authDomain: "arquitectura-3b64b.firebaseapp.com",
+      projectId: "arquitectura-3b64b",
+      storageBucket: "arquitectura-3b64b.appspot.com",
+      messagingSenderId: "1234567890",
+      appId: "1:1234567890:web:abcdef123456"
+    };
+
+    // Inicializar Firebase
+    const appFirebase = initializeApp(firebaseConfig);
+    const auth = getAuth(appFirebase);
+    const provider = new GoogleAuthProvider();
+
+    // Función para enviar el token al backend
+    async function sendTokenToBackend(token) {
+      try {
+        const response = await fetch("http://localhost:3000/auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: 'include', // Para enviar cookies
+          body: JSON.stringify({ token })
+        });
+        const data = await response.json();
+        if (response.ok) {
+          // Redirige según el rol recibido
+          if (data.user && data.user.role === "admin") {
+            window.location.href = "/admin";
+          } else if (data.user && data.user.role === "student") {
+            window.location.href = "/general";
+          } else {
+            window.location.href = "/general";
+          }
+        } else {
+          alert(`Error: ${data.error}`);
+        }
+      } catch (error) {
+        alert("Error en el proceso de autenticación");
+        console.error(error);
+      }
+    }
+
+    // Evento para el botón de Google
+    document.getElementById("login-google").addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        const token = await user.getIdToken();
+        await sendTokenToBackend(token);
+      } catch (error) {
+        console.error("Error con Google:", error);
+        alert("Error al iniciar sesión con Google");
+      }
+    });
+
+    // Evento para el formulario de inicio de sesión con email
+    document.getElementById("email-login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      if (!email.endsWith("@ucaldas.edu.co")) {
+        alert("El correo debe pertenecer al dominio ucaldas.edu.co");
+        return;
+      }
+      try {
+        const result = await signInWithEmailAndPassword(auth, email, password);
+        const token = await result.user.getIdToken();
+        await sendTokenToBackend(token);
+      } catch (error) {
+        console.error("Error con Email/Password:", error);
+        alert("Error al iniciar sesión con Email");
+      }
+    });
+
+    // Evento para el formulario de registro con email
+    document.getElementById("email-register-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("reg-email").value;
+      const password = document.getElementById("reg-password").value;
+      if (!email.endsWith("@ucaldas.edu.co")) {
+        alert("El correo debe pertenecer al dominio ucaldas.edu.co");
+        return;
+      }
+      try {
+        const result = await createUserWithEmailAndPassword(auth, email, password);
+        const token = await result.user.getIdToken();
+        await sendTokenToBackend(token);
+      } catch (error) {
+        console.error("Error en el registro:", error);
+        alert("Error al registrarse con Email");
+      }
+    });
+  </script>
+</body>
+</html>

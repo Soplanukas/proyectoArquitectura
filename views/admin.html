@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Administrativo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    h2 {
+      color: #444;
+      margin-top: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .crud-section {
+      margin-bottom: 40px;
+    }
+    button {
+      padding: 8px 16px;
+      background: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #357ae8;
+    }
+    input[type="text"], input[type="number"], input[type="email"] {
+      padding: 6px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .form-container {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Panel Administrativo</h1>
+    
+    <!-- Sección de Gestión de Usuarios -->
+    <div class="crud-section" id="students-section">
+      <h2>Gestión de Usuarios</h2>
+      <button onclick="showStudentForm()">Agregar Usuario</button>
+      <div class="form-container" id="student-form" style="display: none;">
+        <h3>Nuevo Usuario</h3>
+        <form id="addStudentForm">
+          <input type="text" id="studentName" placeholder="Nombre del Usuario" required>
+          <input type="email" id="studentEmail" placeholder="Correo Electrónico" required>
+          <button type="submit">Guardar</button>
+          <button type="button" onclick="hideStudentForm()">Cancelar</button>
+        </form>
+      </div>
+      <table id="studentsTable">
+        <thead>
+          <tr>
+            <th>UID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará dinámicamente mediante adminUsers.js -->
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Sección de Gestión de Aulas -->
+    <div class="crud-section" id="classrooms-section">
+      <h2>Gestión de Aulas</h2>
+      <button onclick="showClassroomForm()">Agregar Aula</button>
+      <div class="form-container" id="classroom-form" style="display: none;">
+        <h3>Nueva Aula</h3>
+        <form id="addClassroomForm">
+          <!-- Edificio: Selección mediante un select -->
+          <label for="building">Edificio:</label>
+          <select id="building" required>
+            <option value="">Seleccionar Edificio</option>
+            <option value="Administrativo">Edificio Administrativo</option>
+            <option value="Orlando sierra">Edificio Orlando Sierra</option>
+            <option value="Parque">Edificio del Parque</option>
+            <option value="Micaela">Edificio Bicentenario (Mikaela)</option>
+            <option value="Agropecuaria">Sede Sancancio</option>
+            <option value="Laboratorios Marco Tulio Jaramillo Salazar">Edificio de Laboratorios</option>
+          </select>
+    
+          <!-- Aula Original -->
+          <label for="classroomOriginal">Aula Original:</label>
+          <input type="text" id="classroomOriginal" placeholder="Aula Original" required>
+    
+          <!-- Aula Remitente -->
+          <label for="classroomRemitente">Aula Remitente:</label>
+          <input type="text" id="classroomRemitente" placeholder="Aula Remitente" required>
+    
+          <!-- Piso -->
+          <label for="floor">Piso:</label>
+          <input type="number" id="floor" placeholder="Piso" required>
+    
+          <!-- Docente -->
+          <label for="teacher">Nombre del Docente:</label>
+          <input type="text" id="teacher" placeholder="Nombre del Docente" required>
+    
+          <!-- Asignatura -->
+          <label for="subject">Nombre de la Asignatura:</label>
+          <input type="text" id="subject" placeholder="Nombre de la Asignatura" required>
+    
+          <button type="submit">Guardar</button>
+          <button type="button" onclick="hideClassroomForm()">Cancelar</button>
+        </form>
+      </div>
+    
+      <table id="classroomsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Edificio</th>
+            <th>Aula Original</th>
+            <th>Aula Remitente</th>
+            <th>Piso</th>
+            <th>Docente</th>
+            <th>Asignatura</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará dinámicamente mediante adminAulas.js -->
+        </tbody>
+      </table>
+    </div>    
+  </div>
+  
+  <!-- Carga de módulos externos: -->
+  <script type="module" src="./js/adminAulas.js"></script>
+  <script type="module" src="./js/adminUsers.js"></script>
+  <script type="module" src="./js/adminApp.js"></script>
+</body>
+</html>
