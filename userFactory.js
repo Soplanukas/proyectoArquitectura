@@ -46,4 +46,4 @@ const allowedAdminEmails = [
   
   module.exports = { UserFactory, StudentUser, AdminUser };
   
-//prueba de uso git v2
+//prueba de uso git v3
