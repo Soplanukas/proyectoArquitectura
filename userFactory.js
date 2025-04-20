@@ -5,7 +5,7 @@ const allowedAdminEmails = [
     "admin@ucaldas.edu.co",
     "otroadmin@ucaldas.edu.co",
     "jose.34172688@ucaldas.edu.co",
-    //"daniel.ospina38767@ucaldas.edu.co"
+    "andres.garcia36704@ucaldas.edu.co"
   ];
   
   
