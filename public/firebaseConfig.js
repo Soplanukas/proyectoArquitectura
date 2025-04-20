@@ -1,7 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-auth.js";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCGwFsmz6SKcFlJTyULAIk2rR6CHJ6liM4", 
   authDomain: "arquitectura-3b64b.firebaseapp.com",
@@ -49,3 +48,5 @@ export async function loginWithGoogle() {
     return null;
   }
 }
+
+export { app };
