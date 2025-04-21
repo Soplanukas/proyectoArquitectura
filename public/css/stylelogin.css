@@ -1,0 +1,62 @@
+/* Fondo full‑screen */
+body {
+  background-image: url('/imagenes/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: Arial, sans‑serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* La card principal toma tu estilo frosted glass */
+.login-container {
+  width: 100%;
+  max-width: 420px;        /* igual que en el HTML */
+  margin: 0 auto;          /* centrada en el contenedor flex */
+
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  border-radius: 8px;
+}
+
+/* Asegura que el body de la card transparente no tape el blur */
+.login-container .card-body {
+  background: transparent !important;
+  color: #fff;             /* texto en blanco para contraste */
+}
+
+/* divider “o” */
+.divider {
+  color: #ddd;
+}
+
+/* _Tabs_ transparentes sobre el fondo esmerilado */
+.nav-tabs {
+  border-bottom: none;      /* quita línea por defecto */
+}
+.nav-tabs .nav-link {
+  background: transparent;  /* sin fondo */
+  border: none;             /* quita bordes */
+  color: #fff;              /* texto claro */
+}
+.nav-tabs .nav-link.active {
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  color: #fff;
+}
+
+/* Línea separadora bajo las pestañas */
+.login-container .nav-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* Inputs y botones siguen tu estilo */
+/* (ya los tienes pero puedes ajustar colores si quieres) */
