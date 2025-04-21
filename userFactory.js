@@ -52,6 +52,3 @@ const allowedAdminEmails = [
   module.exports = { UserFactory, StudentUser, AdminUser };
   
 
-
-
-  //Holixd
