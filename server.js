@@ -1,4 +1,5 @@
 // server.js
+const open = require("open");
 const express = require("express");
 const admin = require("firebase-admin");
 const cors = require("cors");
@@ -113,13 +114,21 @@ app.get("/general", requireAuth, (req, res) => {
   res.sendFile(path.join(__dirname, "views", "general.html"));
 });
 
+// Ruta protegida para la VISTA general, donde se puede loguear y regostrar ")
+app.get("/vistaprinc", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "vistaprinc.html"));
+});
+
 /* -------------- RUTAS PARA API -------------- */
 app.use('/api/aulas', aulasRoutes);
 app.use('/api/users', studentsRoutes);
 app.use('/api/', aulasAdminRoutes);
 
+
 // Inicio del servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  open(`http://localhost:${PORT}/vistaprinc`);
 });
+

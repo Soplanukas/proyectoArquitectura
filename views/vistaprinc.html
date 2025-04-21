@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <title>Página CUBE inicio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    .wrapper {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* PANEL IZQUIERDO */
+    .left {
+      flex: 1;
+      background: #030637; /* azul muy oscuro */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo img {
+      display: inline-block;
+      width: 120px;    
+      height: auto;
+    }
+
+    .info {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .info-box {
+      flex: 1;
+      border: 1px solid #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* PANEL DERECHO */
+    .right {
+      width: 350px;
+      background: #191a19; /* gris oscuro */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .right h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #0af;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Icono derecho */
+    .icon {
+      display: block;
+      margin: 0 auto;
+      width: 160px;   /*tamaño deseado*/
+      height: auto;
+    }
+
+    .logo img {
+      display: inline-block; 
+      width: 120px;           
+      height: auto;
+      margin: 0;              
+    }
+
+    .logo {
+      text-align: left;
+      padding-left: 5px;  /* separa un poco del borde */
+      margin-bottom: 20px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- Panel izquierdo -->
+    <div class="left">
+      <div class="logo">
+        <img src="/imagenes/cube2.png" alt="Logo CUBE">
+      </div>      
+      <div class="info">
+        <div class="info-box">
+          ¿Necesitas ayuda para ubicar tus salones? ¡Te ayudo! :)
+        </div>
+        <div class="info-box">
+          ¡Tengo imágenes exactas para que jamás te pierdas! :)
+        </div>
+        <div class="info-box">
+          ¡Tengo imágenes exactas para que jamás te pierdas! :)
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel derecho -->
+    <div class="right">
+      <h2>Empezar</h2>
+      <div class="buttons">
+        <a href="/" class="btn">Iniciar sesión o Registrate </a>
+      </div>
+      <img src="/imagenes/iconcube.png" alt="Logo Cube" class="icon" />
+    </div>
+  </div>
+</body>
+</html>
