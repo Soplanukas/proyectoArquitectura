@@ -4,11 +4,9 @@ Proyecto Arquitectura – Readme / instalación y ejecución
 - Node.js y npm instalados
 - PostgreSQL instalado y funcionando
 - Git instalado
-  
-📦 Clonar el repositorio
-- Abre una terminal y ejecuta:
-git clone https://github.com/Soplanukas/proyectoArquitectura.git
-cd proyectoArquitectura
+
+🗄️ Instalar Node-js
+1. Descarga Node-js desde https://nodejs.org/es/download
 
 🗄️ Instalar PostgreSQL
 1. Descarga PostgreSQL desde https://www.postgresql.org/download/
@@ -44,6 +42,11 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+  
+📦 Clonar el repositorio
+- Abre una terminal y ejecuta:
+git clone https://github.com/Soplanukas/proyectoArquitectura.git
+cd proyectoArquitectura
 
 🧪 Configurar archivo .env
 Crea un archivo .env en la raíz del proyecto con el siguiente contenido:
@@ -57,6 +60,13 @@ PG_PORT=5432
 📥 Instalar dependencias
 Ejecuta el siguiente comando en la raíz del proyecto:
 npm install
+
+Para poder ejecutar el programa también puedes abrir la terminal en Visual Studio Code y ejecutar:
+-node index.js
+
+También puedes instalarla las dependencias manualmente con los siguientes comandos:
+-npm install body-parser cors dotenv express express-session firebase firebase-admin jsonwebtoken passport passport-google-oauth20 pg
+-npm install --save-dev nodemon
 
 🚀 Ejecutar el proyecto
 - Modo producción:
@@ -75,9 +85,3 @@ npm run dev
   
 ✅ Estado
 Proyecto en desarrollo con autenticación, gestión de aulas y sistema conectado a base de datos PostgreSQL.
-
-Para poder ejecutar el programa también puedes abrir la terminal en Visual Studio Code y ejecutar:
-node index.js
-También puedes instalarla las dependencias manualmente con los siguientes comandos:
-npm install body-parser cors dotenv express express-session firebase firebase-admin jsonwebtoken passport passport-google-oauth20 pg
-npm install --save-dev nodemon
