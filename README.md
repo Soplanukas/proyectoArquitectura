@@ -42,6 +42,8 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE EXTENSION IF NOT EXISTS unaccent;
   
 📦 Clonar el repositorio
 - Abre una terminal y ejecuta:
@@ -69,10 +71,7 @@ También puedes instalarla las dependencias manualmente con los siguientes coman
 -npm install --save-dev nodemon
 
 🚀 Ejecutar el proyecto
-- Modo producción:
-npm start
-- Modo desarrollo (con reinicio automático):
-npm run dev
+Para ejecutar el proyecto digite la siguiente linea en su terminal de visual studio code: node server.js
 
 📚 Tecnologías utilizadas
 - Node.js
