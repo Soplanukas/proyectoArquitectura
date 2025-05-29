@@ -70,7 +70,8 @@ También puedes instalarla las dependencias manualmente con los siguientes coman
 -npm install body-parser cors dotenv express express-session firebase firebase-admin jsonwebtoken passport passport-google-oauth20 pg
 -npm install --save-dev nodemon
 
-🚀 Ejecutar el proyecto
+🚀 Ejecutar el proyecto:
+
 Para ejecutar el proyecto digite la siguiente linea en su terminal de visual studio code: node server.js
 
 📚 Tecnologías utilizadas
