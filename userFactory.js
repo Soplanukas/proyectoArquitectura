@@ -9,8 +9,6 @@ const allowedAdminEmails = [
     //"luisa.martinez37412@ucaldas.edu.co",
     //"daniel.ospina38767@ucaldas.edu.co"
     //"andres.garcia36704@ucaldas.edu.co"
-    
-
   ];
   
   

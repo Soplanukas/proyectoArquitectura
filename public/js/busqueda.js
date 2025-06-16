@@ -48,7 +48,6 @@ async function buscar() {
         <button onclick='resaltarEnMapa(${aula.coordenada_x}, ${aula.coordenada_z}, ${JSON.stringify(aula)})'>Seleccionar</button>
       `;
       // Se añade el div creado al contenedor de resultados
-      //comentario para vainas
       resultadoDiv.appendChild(div);
     });
   }
