@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Buscar Aula - Universidad de Caldas</title>
@@ -14,6 +15,7 @@
   <!-- Estilos personalizados -->
   <link rel="stylesheet" href="/css/stylesMapa.css">
 </head>
+
 <body>
   <div class="main-container d-flex flex-column flex-lg-row">
     <!-- Mapa + Info -->
@@ -24,36 +26,69 @@
 
     <!-- Formulario -->
     <div class="form-container bg-dark text-white">
-      <h3 class="mb-3 text-center">Buscar Aula</h3>
+      <!-- Nav Tabs -->
+      <ul class="nav nav-tabs mb-3" id="tabBusqueda" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="manual-tab" data-bs-toggle="tab" data-bs-target="#manual" type="button"
+            role="tab">Búsqueda Manual</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat" type="button"
+            role="tab">Asistente Virtual</button>
+        </li>
+      </ul>
 
-      <div class="mb-3">
-        <label for="edificio" class="form-label">Nombre del edificio:</label>
-        <input type="text" id="edificio" class="form-control">
+      <div class="tab-content" id="tabContenido">
+        <!-- Búsqueda Manual -->
+        <div class="tab-pane fade show active" id="manual" role="tabpanel">
+          <h3 class="text-center">Buscar Aula</h3>
+
+          <div class="mb-3">
+            <label for="edificio" class="form-label">Nombre del edificio:</label>
+            <input type="text" id="edificio" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="aula" class="form-label">Aula:</label>
+            <input type="text" id="aula" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="piso" class="form-label">Piso del aula:</label>
+            <input type="number" id="piso" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="docente" class="form-label">Nombre del docente:</label>
+            <input type="text" id="docente" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="materia" class="form-label">Nombre de la asignatura:</label>
+            <input type="text" id="materia" class="form-control">
+          </div>
+
+          <button onclick="buscar()" class="btn btn-primary w-100">Buscar</button>
+
+          <div id="resultado" class="mt-4"></div>
+        </div>
+
+        <!-- Chat -->
+        <div class="tab-pane fade" id="chat" role="tabpanel">
+          <div id="chat-container">
+            <div id="chat-mensajes"></div>
+            <form id="formulario" class="mb-3">
+              <div class="mb-2">
+                <input type="text" id="mensaje" class="form-control form-control-lg"
+                  placeholder="Escribe tu pregunta..." style="height: 30px;" required>
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary w-100" type="submit">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <div class="mb-3">
-        <label for="aula" class="form-label">Aula:</label>
-        <input type="text" id="aula" class="form-control">
-      </div>
-
-      <div class="mb-3">
-        <label for="piso" class="form-label">Piso del aula:</label>
-        <input type="number" id="piso" class="form-control">
-      </div>
-
-      <div class="mb-3">
-        <label for="docente" class="form-label">Nombre del docente:</label>
-        <input type="text" id="docente" class="form-control">
-      </div>
-
-      <div class="mb-3">
-        <label for="materia" class="form-label">Nombre de la asignatura:</label>
-        <input type="text" id="materia" class="form-control">
-      </div>
-
-      <button onclick="buscar()" class="btn btn-primary w-100">Buscar</button>
-
-      <div id="resultado" class="mt-4"></div>
     </div>
   </div>
 
@@ -63,5 +98,8 @@
   <!-- Scripts personalizados -->
   <script type="module" src="/js/mapa.js"></script>
   <script src="/js/busqueda.js"></script>
+  <script type="module" src="/js/mensajeIA.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

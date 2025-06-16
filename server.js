@@ -11,6 +11,7 @@ const { UserFactory } = require("./userFactory");
 const aulasRoutes = require("./routes/aulas");
 const studentsRoutes = require("./routes/students");
 const aulasAdminRoutes = require("./routes/aulasAdmin");
+const iaRoutes = require("./routes/ia");
 
 const serviceAccount = require("./serviceAccountKey.json");
 
@@ -119,11 +120,15 @@ app.get("/vistaprinc", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "vistaprinc.html"));
 });
 
+app.get("/chat", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "chat.html"));
+});
+
 /* -------------- RUTAS PARA API -------------- */
 app.use('/api/aulas', aulasRoutes);
 app.use('/api/users', studentsRoutes);
 app.use('/api/', aulasAdminRoutes);
-
+app.use("/ia", iaRoutes);
 
 // Inicio del servidor
 const PORT = process.env.PORT || 3000;
