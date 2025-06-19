@@ -82,6 +82,7 @@ Para ejecutar el proyecto digite la siguiente linea en su terminal de visual stu
 - Passport (con Google OAuth 2.0)
 - Dotenv
 - CORS, body-parser, jsonwebtoken, etc.
+- Gemini Google Generative AI - API
   
 ✅ Estado
 Proyecto en desarrollo con autenticación, gestión de aulas y sistema conectado a base de datos PostgreSQL.
